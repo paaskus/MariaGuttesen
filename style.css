@@ -1,0 +1,73 @@
+/* GENERAL */
+
+* {
+    margin: 0; /* reset margin */
+    padding: 0; /* reset padding */
+}
+
+body {
+	font-family: "helvetica neue", helvetica, arial, sans-serif; /* default fonts */
+	color: white;
+}
+
+html, body, #main {
+    height: 100%;
+}
+
+/* IMAGES */
+
+#logo {
+	width: 300px;
+}
+
+/* DIVS */
+
+#main {
+	position: relative;
+	display: block;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.60);
+	padding-top: 200px;
+}
+
+#content {
+	display: block;
+	height: 30%;
+	float: none;
+	width: 300px;
+	margin: 0 auto;
+	align-self: center;
+	text-align: center;
+}
+
+/* PARAGRAPHS */
+
+#title {
+	display: inline-block;
+	margin-top: 10px;
+	font-weight: bold;
+	font-size: 40px;
+	color: #CC9802;
+}
+
+#asA {
+	margin-top: 10px;
+	font-size: 20px;
+}
+
+/* VIDEO */
+video#bgvid { 
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    background: url(MGlogo.svg) no-repeat;
+    background-size: cover; 
+}
