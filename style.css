@@ -23,20 +23,24 @@ html, body, #main {
 /* DIVS */
 
 #main {
-	position: relative;
-	display: block;
-	width: 100%;
-	height: 100%;
+	position: fixed;
+	position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    background-size: cover;
 	background-color: rgba(0, 0, 0, 0.70);
-	padding-top: 200px;
 }
 
 #content {
 	display: block;
-	height: 30%;
-	float: none;
 	width: 300px;
-	margin: 0 auto;
+	margin: 200px auto;
 	align-self: center;
 	text-align: center;
 }
@@ -68,6 +72,6 @@ video.bgvid {
     z-index: -100;
     -webkit-transform: translateX(-50%) translateY(-50%);
     transform: translateX(-50%) translateY(-50%);
-    background: url(MGlogo.svg) no-repeat;
+    background-color: rgb(0, 0, 0);
     background-size: cover; 
 }

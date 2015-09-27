@@ -1,13 +1,16 @@
 var previousTitle = Math.floor(Math.random() * 6);
+var opacity = 1;
 
 var titles = [
 	{"name": "Bass Player", "an": false, "path": "COMP/BassPlayerCOMP.mp4"},
 	{"name": "Drummer", "an": false, "path": "COMP/DrummerCOMP.mp4"},
 	{"name": "Improviser", "an": true, "path": "COMP/ImproviserCOMP.mp4"},
-	{"name": "Piano Player", "an": false, "path": ["COMP/PianoPlayerCOMP.mp4", "COMP/PianoPlayer2COMP.mp4"]},
+	{"name": "Keyboard Player", "an": false, "path": ["COMP/PianoPlayerCOMP.mp4", "COMP/PianoPlayer2COMP.mp4"]},
 	{"name": "Producer", "an": false, "path": ["COMP/ProducerCOMP.mp4", "COMP/Producer2COMP.mp4"]},
 	{"name": "Singer", "an": false, "path": "COMP/SingerCOMP.mp4"}
 ];
+
+var an = false;
 
 $(document).ready(function() {
 	insertBgVideo(previousTitle);
@@ -37,30 +40,21 @@ function insertBgVideo(numOfPreviousTitle) {
 	if (typeof source === "object") {
 		source = source[getRandomNumber(source.length)];
 	}
+	an = an || title.an;
 
 	// Prepare for deletion
 	$("#insertVid").attr("id", "removeVid");
-	$("#removeVid").css({"z-index": "50"});
 
 	var vid = insertVideoElement();
-	vid.append($(document.createElement('source')).attr({"src": source, "type": "video/mp4", "display": "none"}));
-	$("#insertVid").get(0).play();
+	vid.append($(document.createElement('source')).attr({"src": source, "type": "video/mp4"}));
+	$("#insertVid")[0].play();
 
-	// Fade-in / Fade-out
-	$("#removeVid").fadeOut({"duration": "slow"});
-	$("#insertVid").fadeIn({"duration": "slow"});
-
-	if (title.an) {
-		$("#asA").html("as an");
-	} else {
-		$("#asA").html("as a");
+	if (an) {
+		$("#asA").html("as " + (title.an ? "an" : "a"));
 	}
+
 	$("#title").html(name);
-
-	setTimeout(function() {
-		removeVideoElement();
-	}, 2000);
-
+	removeVideoElement();
 }
 
 function getRandomNumber(n, doNotInclude) {
@@ -69,11 +63,4 @@ function getRandomNumber(n, doNotInclude) {
 		rn = Math.floor(Math.random() * n);
 	}
 	return rn;
-}
-
-function videoError(element) {
-	var el = $(element);
-	//el.css("z-index", "-1000");
-	//el.attr("src", "MGLogo.png");
-
 }
