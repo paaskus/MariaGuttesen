@@ -54,7 +54,7 @@ function insertBgVideo(numOfPreviousTitle) {
 
     // insert an / a
     if (an) {
-        $("#asA").html("as " + (title.an ? an : "a"));
+        $("#asA").html("as " + (title.an ? "an" : "a"));
     }
 
     // insert new name
