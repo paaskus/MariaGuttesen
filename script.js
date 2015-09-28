@@ -25,7 +25,7 @@ function insertVideoElement(sourceOfVid) {
     return videoElement[0];
 }
 
-// removes a video element tagged with the 'removeVid' id
+// removes the 'videoToRemove' element
 function removeVideoElement() {
     $("#videoToRemove").remove();
 
@@ -50,7 +50,7 @@ function insertBgVideo(numOfpreviousVideo) {
     // insert new video and start playing; fadeout old
     var nextVid = insertVideoElement(source);
     nextVid.play();
-    videoToRemove.fadeOut(600);
+    videoToRemove.fadeOut(1000);
     $("#title").text(nextVidData.title);
 
     // update an/a and the title
@@ -59,7 +59,7 @@ function insertBgVideo(numOfpreviousVideo) {
     // remove old video element after fadeout
     setTimeout(function() {
     	removeVideoElement();
-    }, 600);
+    }, 1000);
 }
 
 /**
