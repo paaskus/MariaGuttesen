@@ -1,67 +1,65 @@
-var titles = [
-    {name: "bass player", an: false, path: "COMP/BassPlayerCOMP.mp4"},
-    {name: "drummer", an: false, path: "COMP/DrummerCOMP.mp4"},
-    {name: "improviser", an: true, path: "COMP/ImproviserCOMP.mp4"},
-    {name: "keyboard player", an: false, path: ["COMP/PianoPlayerCOMP.mp4", "COMP/PianoPlayer2COMP.mp4"]},
-    {name: "producer", an: false, path: ["COMP/ProducerCOMP.mp4", "COMP/Producer2COMP.mp4"]},
-    {name: "singer", an: false, path: "COMP/SingerCOMP.mp4"}
+var videosData = [
+    {title: "bass player", an: false, path: "COMP/BassPlayerCOMP.mp4"},
+    {title: "drummer", an: false, path: "COMP/DrummerCOMP.mp4"},
+    {title: "improviser", an: true, path: "COMP/ImproviserCOMP.mp4"},
+    {title: "keyboard player", an: false, path: ["COMP/PianoPlayerCOMP.mp4", "COMP/PianoPlayer2COMP.mp4"]},
+    {title: "producer", an: false, path: ["COMP/ProducerCOMP.mp4", "COMP/Producer2COMP.mp4"]},
+    {title: "singer", an: false, path: "COMP/SingerCOMP.mp4"}
 ];
 
-var previousTitle = Math.floor(Math.random() * titles.length);
+var previousVideo = Math.floor(Math.random() * videosData.length);
 var an = false;
 
 $(document).ready(function() {
-    insertBgVideo(previousTitle);
+    insertBgVideo(previousVideo);
     setInterval(function() {
-        insertBgVideo(previousTitle);
-    }, 15000);
+        insertBgVideo(previousVideo);
+    }, 14500);
 });
 
 // inserts a new video element
-function insertVideoElement() {
-    var videoElement = $(document.createElement('video')).attr({"id": "insertVid", "class": "bgvid"});
+function insertVideoElement(sourceOfVid) {
+    var videoElement = $(document.createElement('video')).attr({"id": "currentVid", "class": "bgvid"});
+    videoElement.append($(document.createElement('source')).attr({"src": sourceOfVid, "type": "video/mp4"}));
     $("#body").append(videoElement);
-    return videoElement;
+    return videoElement[0];
 }
 
 // removes a video element tagged with the 'removeVid' id
 function removeVideoElement() {
-    $("#removeVid").remove();
+    $("#videoToRemove").remove();
 
 }
 
-// numOfPreviousTitle -> int
-function insertBgVideo(numOfPreviousTitle) {
-    // Get attributes of next video
-    var num = getRandomNumber(titles.length, previousTitle); previousTitle = num;
-    var title = titles[num];
-    var name = title.name;
-    var source = title.path;
+// numOfpreviousVideo -> int
+function insertBgVideo(numOfpreviousVideo) {
+	// Find index of next video randomly
+    var num = getRandomNumber(videosData.length, previousVideo); previousVideo = num;
+    var nextVidData = videosData[num];
+    var source = nextVidData.path;
     if (typeof source === "object") {
         source = source[getRandomNumber(source.length)];
     }
-
-    // an or a [nameOfTitle]?
-    an = (an || title.an);
+    an = (an || nextVidData.an); // an or a?
 
     // prepare for deletion of existing video element
-    $("#insertVid").attr("id", "removeVid");
+    var videoToRemove = $("#currentVid");
+    videoToRemove.attr("id", "videoToRemove")
+    videoToRemove.css("z-index", "-90"); // Show in front of nextVid
 
-    // insert new video element and start playing
-    var insertedVid = insertVideoElement();
-    insertedVid.append($(document.createElement('source')).attr({"src": source, "type": "video/mp4"}));
-    $("#insertVid")[0].play();
+    // insert new video and start playing; fadeout old
+    var nextVid = insertVideoElement(source);
+    nextVid.play();
+    videoToRemove.fadeOut(600);
+    $("#title").text(nextVidData.title);
 
-    // insert an / a
-    if (an) {
-        $("#asA").html("as " + (title.an ? "an" : "a"));
-    }
+    // update an/a and the title
+    if (an) $("#as").html("as " + (nextVidData.an ? "an" : "a"));
 
-    // insert new name
-    $("#title").html(name);
-
-    // remove old video element
-    removeVideoElement();
+    // remove old video element after fadeout
+    setTimeout(function() {
+    	removeVideoElement();
+    }, 600);
 }
 
 /**
