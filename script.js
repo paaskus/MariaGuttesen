@@ -55,7 +55,7 @@ var an = false;
 function handleBackgroundBasedOnDevice() {
     var autoplay = detect_autoplay();
     // if browser supports autoplay (dependant on detect_autoplay.js)
-    backgroundHandler = (!autoplay) ? videoBackgroundHandler : imageBackgroundHandler;
+    backgroundHandler = (autoplay) ? videoBackgroundHandler : imageBackgroundHandler;
     updateBackground(backgroundHandler.previousBackground);
     setInterval(function() {
         updateBackground(backgroundHandler.previousBackground);
