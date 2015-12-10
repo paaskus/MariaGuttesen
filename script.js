@@ -8,12 +8,12 @@ var videosData = [
 ];
 
 var imagesData = [
-    {title: "bass player", an: false, path: "images/autoplayNotSupported.png"},
-    {title: "drummer", an: false, path: "images/autoplayNotSupported.png"},
-    {title: "improviser", an: true, path: "images/autoplayNotSupported.png"},
-    {title: "keyboard player", an: false, path: "images/autoplayNotSupported.png"},
-    {title: "producer", an: false, path: "images/autoplayNotSupported.png"},
-    {title: "singer", an: false, path: "images/autoplayNotSupported.png"}
+    {title: "bass player", an: false, path: "images/bass.png"},
+    {title: "drummer", an: false, path: "images/drummer.png"},
+    {title: "improviser", an: true, path: "images/improviser.png"},
+    {title: "keyboard player", an: false, path: ["images/piano.png", "images/piano2.png", "images/piano3.png"]},
+    {title: "producer", an: false, path: ["images/producer.png", "images/producer2.png"]},
+    {title: "singer", an: false, path: "images/singer.png"}
 ];
 
 // main function
@@ -30,7 +30,8 @@ var imageBackgroundHandler = {
         var imageElement = $(document.createElement('img'))
             .attr({"id": "currentBackground", "class": "background", "src": sourceOfImage})
         $("#body").append(imageElement);
-    }
+    },
+    delay: 500
 }
 
 // Inserts video-backgrounds
@@ -43,7 +44,8 @@ var videoBackgroundHandler = {
         videoElement.append($(document.createElement('source')).attr({"src": sourceOfVid, "type": "video/mp4"}));
         $("#body").append(videoElement);
         videoElement[0].play(); // start the video
-    }
+    },
+    delay: 1100
 }
 
 var backgroundHandler;
@@ -53,7 +55,7 @@ var an = false;
 function handleBackgroundBasedOnDevice() {
     var autoplay = detect_autoplay();
     // if browser supports autoplay (dependant on detect_autoplay.js)
-    backgroundHandler = (autoplay) ? videoBackgroundHandler : imageBackgroundHandler;
+    backgroundHandler = (!autoplay) ? videoBackgroundHandler : imageBackgroundHandler;
     updateBackground(backgroundHandler.previousBackground);
     setInterval(function() {
         updateBackground(backgroundHandler.previousBackground);
@@ -79,11 +81,11 @@ function updateBackground(idOfPreviousBackground) {
     // prepare for deletion of existing background element
     var backgroundToRemove = $("#currentBackground");
     backgroundToRemove.attr("id", "backgroundToRemove")
-    backgroundToRemove.css("z-index", "-110"); // Show behind nextBackground
+    backgroundToRemove.css("z-index", "-90"); // Show in front of nextBackground
 
     // insert next background; fadeout old
     backgroundHandler.insertBackground(source);
-    backgroundToRemove.fadeOut(1200);
+    backgroundToRemove.fadeOut(backgroundHandler.delay);
     $("#title").text(nextBackgroundObject.title);
 
     // update an/a and the title
@@ -92,7 +94,7 @@ function updateBackground(idOfPreviousBackground) {
     // remove old video element after fadeout
     setTimeout(function() {
     	removePreviousBackground();
-    }, 1200);
+    }, backgroundHandler.delay);
 }
 
 /**
