@@ -17,9 +17,7 @@
 */
 
 function detect_autoplay(acceptable_delay) {
-    var autoplay = null;
     var autoplay_test_content = document.createElement('video');
-    autoplay_test_content.id = "autoplay_test_content";
     
     //create mp4 and webm sources, 5s long
     var mp4 = document.createElement('source');
@@ -40,16 +38,13 @@ function detect_autoplay(acceptable_delay) {
     
     //add to DOM       
     document.getElementsByTagName("body")[0].appendChild(autoplay_test_content);
-    
     var base64_test_video = document.getElementById("base64_test_video");
     
-    //test for autoplay, 100 ms buffer   
-    setTimeout(function(){
-        autoplay = (!base64_test_video.paused) ? true : false;
-        document.getElementsByTagName("body")[0].removeChild(autoplay_test_content);
-        return autoplay;
-    },acceptable_delay);
-    return true;
+    var autoplay;
+    if (!base64_test_video.paused) autoplay = true;
+    else autoplay = false;
+    document.getElementsByTagName("body")[0].removeChild(autoplay_test_content);
+    return autoplay;
 }
 
 /*

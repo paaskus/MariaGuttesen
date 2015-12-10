@@ -16,13 +16,19 @@ var imagesData = [
     {title: "singer", an: false, path: "images/autoplayNotSupported.png"}
 ];
 
+// main function
+$(document).ready(function() {
+    handleBackgroundBasedOnDevice();
+});
+
 // Inserts image-backgrounds
 var imageBackgroundHandler = {
     previousBackground: (Math.floor(Math.random() * imagesData.length)),
     backgrounds: imagesData,
     insertBackground: function(sourceOfImage) {
         // inserts a new video element
-        var imageElement = $(document.createElement('img')).attr({"id": "currentBackground", "class": "background", "src": sourceOfImage});
+        var imageElement = $(document.createElement('img'))
+            .attr({"id": "currentBackground", "class": "background", "src": sourceOfImage})
         $("#body").append(imageElement);
     }
 }
@@ -43,14 +49,11 @@ var videoBackgroundHandler = {
 var backgroundHandler;
 var an = false;
 
-$(document).ready(function() {
-    handleBackgroundBasedOnDevice();
-});
-
 // determines whether the browser supports video-backgrounds
 function handleBackgroundBasedOnDevice() {
+    var autoplay = detect_autoplay();
     // if browser supports autoplay (dependant on detect_autoplay.js)
-    backgroundHandler = (detect_autoplay(100)) ? videoBackgroundHandler : imageBackgroundHandler;
+    backgroundHandler = (autoplay) ? videoBackgroundHandler : imageBackgroundHandler;
     updateBackground(backgroundHandler.previousBackground);
     setInterval(function() {
         updateBackground(backgroundHandler.previousBackground);
@@ -73,14 +76,14 @@ function updateBackground(idOfPreviousBackground) {
         source = source[getRandomNumber(source.length)];
     }
 
-    // prepare for deletion of existing video element
+    // prepare for deletion of existing background element
     var backgroundToRemove = $("#currentBackground");
     backgroundToRemove.attr("id", "backgroundToRemove")
-    backgroundToRemove.css("z-index", "-90"); // Show in front of nextBackground
+    backgroundToRemove.css("z-index", "-110"); // Show behind nextBackground
 
-    // insert new video and start playing; fadeout old
-    var nextBackground = backgroundHandler.insertBackground(source);
-    backgroundToRemove.fadeOut(1500);
+    // insert next background; fadeout old
+    backgroundHandler.insertBackground(source);
+    backgroundToRemove.fadeOut(1200);
     $("#title").text(nextBackgroundObject.title);
 
     // update an/a and the title
@@ -89,7 +92,7 @@ function updateBackground(idOfPreviousBackground) {
     // remove old video element after fadeout
     setTimeout(function() {
     	removePreviousBackground();
-    }, 1000);
+    }, 1200);
 }
 
 /**
