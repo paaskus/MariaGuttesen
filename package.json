@@ -1,0 +1,39 @@
+{
+  "name": "mg-webproject",
+  "version": "0.0.1",
+  "description": "Website for MariaGuttesen",
+  "author": "Bardur Runason Guttesen <bardurrunason@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/paaskus/MariaGuttesen/"
+  },
+  "dependencies": {
+    "express": "^4.13.3",
+    "mongodb": "latest",
+    "angular": "latest"
+  },
+  "devDependencies": {
+    "jshint": "latest",
+    "postcss-cli": "latest",
+    "autoprefixer": "latest",
+    "clean-css": "latest",
+    "uglify-js": "latest"
+  },
+  "scripts": {
+    "lint": "jshint .",
+    "css:build": "postcss --use autoprefixer res/css/*.css -d build/css && cleancss -o build/css/*.css build/css/*.css",
+    "js:build": 
+  },
+  "preferGlobal": false,
+  "private": true,
+  "license": "MIT",
+  "keywords": [
+    "html",
+    "css",
+    "js",
+    "node",
+    "angular",
+    "mongodb",
+    "jquery"
+  ]
+}
