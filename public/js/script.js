@@ -1,19 +1,19 @@
 var videosData = [
-    {title: "bass player", an: false, path: "vid/BassPlayerMORECOMP.mp4"},
-    {title: "drummer", an: false, path: "vid/DrummerMORECOMP.mp4"},
-    {title: "improviser", an: true, path: "vid/ImproviserMORECOMP.mp4"},
-    {title: "keyboard player", an: false, path: ["vid/PianoPlayerMORECOMP.mp4", "vid/PianoPlayer2MORECOMP.mp4"]},
-    {title: "producer", an: false, path: ["vid/ProducerMORECOMP.mp4", "vid/Producer2MORECOMP.mp4"]},
-    {title: "singer", an: false, path: "vid/SingerMORECOMP.mp4"}
+    {title: "bass player", an: false, path: "public/vid/BassPlayerMORECOMP.mp4"},
+    {title: "drummer", an: false, path: "public/vid/DrummerMORECOMP.mp4"},
+    {title: "improviser", an: true, path: "public/vid/ImproviserMORECOMP.mp4"},
+    {title: "keyboard player", an: false, path: ["public/vid/PianoPlayerMORECOMP.mp4", "public/vid/PianoPlayer2MORECOMP.mp4"]},
+    {title: "producer", an: false, path: ["public/vid/ProducerMORECOMP.mp4", "public/vid/Producer2MORECOMP.mp4"]},
+    {title: "singer", an: false, path: "public/vid/SingerMORECOMP.mp4"}
 ];
 
 var imagesData = [
-    {title: "bass player", an: false, path: "img/backgrounds/bass.png"},
-    {title: "drummer", an: false, path: "img/backgrounds/drummer.png"},
-    {title: "improviser", an: true, path: "img/backgrounds/improviser.png"},
-    {title: "keyboard player", an: false, path: ["img/backgrounds/piano.png", "img/backgrounds/piano2.png", "img/backgrounds/piano3.png"]},
-    {title: "producer", an: false, path: ["img/backgrounds/producer.png", "img/backgrounds/producer2.png"]},
-    {title: "singer", an: false, path: ["img/backgrounds/singer.png", "img/backgrounds/singer2.png"]}
+    {title: "bass player", an: false, path: "public/img/backgrounds/bass.png"},
+    {title: "drummer", an: false, path: "public/img/backgrounds/drummer.png"},
+    {title: "improviser", an: true, path: "public/img/backgrounds/improviser.png"},
+    {title: "keyboard player", an: false, path: ["public/img/backgrounds/piano.png", "public/img/backgrounds/piano2.png", "public/img/backgrounds/piano3.png"]},
+    {title: "producer", an: false, path: ["public/img/backgrounds/producer.png", "public/img/backgrounds/producer2.png"]},
+    {title: "singer", an: false, path: ["public/img/backgrounds/singer.png", "public/img/backgrounds/singer2.png"]}
 ];
 
 // main function
@@ -45,7 +45,7 @@ var videoBackgroundHandler = {
         $("#body").append(videoElement);
         videoElement[0].play(); // start the video
     },
-    delay: 1100
+    delay: 2000
 };
 
 var backgroundHandler;

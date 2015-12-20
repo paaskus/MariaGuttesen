@@ -7,10 +7,14 @@
     "type": "git",
     "url": "https://github.com/paaskus/MariaGuttesen/"
   },
+  "main": "appServer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "license": "Copyright 2015, Bardur Runason Guttesen",
   "dependencies": {
-    "express": "^4.13.3",
-    "mongodb": "latest",
-    "angular": "latest"
+    "angular": "^1.4.8",
+    "express": "^4.13.3"
   },
   "devDependencies": {
     "jshint": "latest",
@@ -19,21 +23,6 @@
     "clean-css": "latest",
     "uglify-js": "latest"
   },
-  "scripts": {
-    "lint": "jshint .",
-    "css:build": "postcss --use autoprefixer res/css/*.css -d build/css && cleancss -o build/css/*.css build/css/*.css",
-    "js:build": 
-  },
   "preferGlobal": false,
   "private": true,
-  "license": "MIT",
-  "keywords": [
-    "html",
-    "css",
-    "js",
-    "node",
-    "angular",
-    "mongodb",
-    "jquery"
-  ]
 }

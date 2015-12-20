@@ -1,0 +1,25 @@
+{
+  "name": "MariaGuttesenWeb",
+  "description": "Testing out the mean framework",
+  "main": "app.js",
+  "authors": [
+    "Bardur Runason Guttesen"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "web"
+  ],
+  "moduleType": [],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.8"
+  }
+}
