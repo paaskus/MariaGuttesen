@@ -33,7 +33,7 @@ var server = app.listen(constants.server.PORT, constants.server.HOST, function c
 });
 
 // make public access to bower_components
-app.use("/bower", express.static("bower_components"));
+app.use("/lib", express.static("bower_components"));
 
 // make public access to frontend assets
 app.use("/assets", express.static("assets"));
