@@ -1,19 +1,19 @@
 var videosData = [
-    {title: "bass player", an: false, path: "public/vid/BassPlayerMORECOMP.mp4"},
-    {title: "drummer", an: false, path: "public/vid/DrummerMORECOMP.mp4"},
-    {title: "improviser", an: true, path: "public/vid/ImproviserMORECOMP.mp4"},
-    {title: "keyboard player", an: false, path: ["public/vid/PianoPlayerMORECOMP.mp4", "public/vid/PianoPlayer2MORECOMP.mp4"]},
-    {title: "producer", an: false, path: ["public/vid/ProducerMORECOMP.mp4", "public/vid/Producer2MORECOMP.mp4"]},
-    {title: "singer", an: false, path: "public/vid/SingerMORECOMP.mp4"}
+    {title: "bass player", an: false, path: "assets/vid/BassPlayerMORECOMP.mp4"},
+    {title: "drummer", an: false, path: "assets/vid/DrummerMORECOMP.mp4"},
+    {title: "improviser", an: true, path: "assets/vid/ImproviserMORECOMP.mp4"},
+    {title: "keyboard player", an: false, path: ["assets/vid/PianoPlayerMORECOMP.mp4", "assets/vid/PianoPlayer2MORECOMP.mp4"]},
+    {title: "producer", an: false, path: ["assets/vid/ProducerMORECOMP.mp4", "assets/vid/Producer2MORECOMP.mp4"]},
+    {title: "singer", an: false, path: "assets/vid/SingerMORECOMP.mp4"}
 ];
 
 var imagesData = [
-    {title: "bass player", an: false, path: "public/img/backgrounds/bass.png"},
-    {title: "drummer", an: false, path: "public/img/backgrounds/drummer.png"},
-    {title: "improviser", an: true, path: "public/img/backgrounds/improviser.png"},
-    {title: "keyboard player", an: false, path: ["public/img/backgrounds/piano.png", "public/img/backgrounds/piano2.png", "public/img/backgrounds/piano3.png"]},
-    {title: "producer", an: false, path: ["public/img/backgrounds/producer.png", "public/img/backgrounds/producer2.png"]},
-    {title: "singer", an: false, path: ["public/img/backgrounds/singer.png", "public/img/backgrounds/singer2.png"]}
+    {title: "bass player", an: false, path: "assets/img/backgrounds/bass.png"},
+    {title: "drummer", an: false, path: "assets/img/backgrounds/drummer.png"},
+    {title: "improviser", an: true, path: "assets/img/backgrounds/improviser.png"},
+    {title: "keyboard player", an: false, path: ["assets/img/backgrounds/piano.png", "assets/img/backgrounds/piano2.png", "assets/img/backgrounds/piano3.png"]},
+    {title: "producer", an: false, path: ["assets/img/backgrounds/producer.png", "assets/img/backgrounds/producer2.png"]},
+    {title: "singer", an: false, path: ["assets/img/backgrounds/singer.png", "assets/img/backgrounds/singer2.png"]}
 ];
 
 // main function

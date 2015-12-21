@@ -14,7 +14,8 @@
   "license": "Copyright 2015, Bardur Runason Guttesen",
   "dependencies": {
     "angular": "^1.4.8",
-    "express": "^4.13.3"
+    "express": "^4.13.3",
+    "mongodb": "^2.0.52"
   },
   "devDependencies": {
     "jshint": "latest",
@@ -24,5 +25,5 @@
     "uglify-js": "latest"
   },
   "preferGlobal": false,
-  "private": true,
+  "private": true
 }
